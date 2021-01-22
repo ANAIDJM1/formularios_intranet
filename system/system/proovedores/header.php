@@ -53,7 +53,7 @@ if($_SESSION['user_id']==""){
 </head>
 <!-- ADD THE CLASS fixed TO GET A FIXED HEADER AND SIDEBAR LAYOUT -->
 <!-- the fixed layout is not compatible with sidebar-mini -->
-<body class="hold-transition skin-blue fixed sidebar-mini">
+<body class="hold-transition skin-black fixed sidebar-mini">
 <!-- Site wrapper -->
 <div class="wrapper">
 
@@ -61,12 +61,10 @@ if($_SESSION['user_id']==""){
     <!-- Logo -->
   <a href="../../home/index" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini">
-	  
-	 </span>
+      <span class="logo-mini"></span>
       <!-- logo for regular state and mobile devices -->
         <img src="../../../../dist/img/logo.png" class="user-image" alt="User Image" width="50%">
-</span>
+      </span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">

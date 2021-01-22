@@ -10,14 +10,12 @@ if($_SESSION['user_id']==""){
 
 
 
-
-
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Gestion de Proveedores</title>
+  <title>MODULO ADMINISTRADOR</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -85,48 +83,22 @@ if($_SESSION['user_id']==""){
         <ul class="nav navbar-nav">
 
 
-
-<li class="dropdown messages-menu">
-            <a href="../../home/index/">
-              <i>Datos Administrativos </i>
-            </a>
-          </li>
-
-
-<li class="dropdown messages-menu">
-            <a href="#"><!--href="../../assessments/databank/"-->
-              <i>Area Contable </i>
+<?php if($_SESSION['usertype_id']== 2) {?>           
+          <li class="dropdown messages-menu">
+           <a href="#" onclick="proveedoresrepo()">
+              <i>Reportes de Proveedores</i>
             </a>
           </li> 
-
-         
-
           <li class="dropdown messages-menu">
-            <a href="#"><!--href="../../assessments/pretest/"--> 
-              <i>Area de Reservas </i>
+           <a href="#" onclick="guiasrepo()">
+              <i>Reportes de personal de campo & guias</i>
             </a>
-          </li>
-
-           <li class="dropdown messages-menu">
-           <a href="#"><!--href="../../assessments/examproper/"-->
-              <i>Area de Operaciones </i>
-            </a>
-          </li>
-
-           <li class="dropdown messages-menu">
-           <a href="#"><!--href="../../assessments/results/"--> 
-              <i>Politicas Generales</i>
-            </a>
-          </li>
-<?php if($_SESSION['usertype_id']== 1) {?> 
+          </li> 
           <li class="dropdown messages-menu">
-           <a href="#"><!--href="../../manage/users/"-->
+           <a href="#">
               <i>Adm. Usuarios</i>
-
             </a>
           </li> 
-
-
         <?php } ?>
     
 
@@ -134,13 +106,13 @@ if($_SESSION['user_id']==""){
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="../../../../dist/img/logo.png" class="user-image" alt="User Image">
+              <img src="../../../../dist/img/logo2.png" class="user-image" alt="User Image">
               <span class="hidden-xs"><?php echo $_SESSION['firstname'] ?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="../../../../dist/img/logo.png" class="img-circle" alt="User Image">
+                <img src="../../../../dist/img/logo2.png" class="img-circle" alt="User Image">
 
                 <p>
                   <?php echo $_SESSION['firstname']." ". $_SESSION['lastname'] ?>
@@ -181,27 +153,24 @@ if($_SESSION['user_id']==""){
         <li class="treeview menu-open">
           <a href="#">
             <i class="fa fa-files-o"></i>
-            <span>Test Panel</span>
+            <span>Panel de Reportes</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right">
               </i>
             </span>
           </a>
           <ul class="treeview-menu" style="display:block">
-            <li><a href="" <!--<a href="../../assessments/pretest/"--><i class="fa fa-circle-o"></i>Datos Administrativos</a></li>
-            <li><a href="" <!--<a href="../../assessments/pretest/"--><i class="fa fa-circle-o"></i>Area Contable</a></li>
-            <li><a href="" <!--<a href="../../assessments/examproper/"--><i class="fa fa-circle-o"></i>Area de Reservas</a></li>
-            <li><a href="" <!--<a href="../../assessments/results/"--><i class="fa fa-circle-o"></i>Area de Operaciones</a></li>
-			<li><a href="" <!--<a href="../../assessments/results/"--><i class="fa fa-circle-o"></i>Politicas Generales</a></li>
+            <li><a href="#" onclick="proveedoresrepo()"><i class="fa fa-circle-o"></i>Reportes de Proovedores</a></li>
+            <li><a href="#" onclick="guiasrepo()"><i class="fa fa-circle-o"></i>Reportes de<br> Personal de campo &<br> Guias</a></li>        
           </ul>
         </li>
 <?php 
 
-if($_SESSION['usertype_id']== 1) {?>
+if($_SESSION['usertype_id']== 2) {?>
         <li class="treeview">
           <a href="#">
             <i class="fa fa-gears"></i>
-            <span>Cuenta de Usuario</span>
+            <span>Cuentas de Usuarios</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
@@ -216,5 +185,31 @@ if($_SESSION['usertype_id']== 1) {?>
     <!-- /.sidebar -->
   </aside>
 </div>
+
+
+<script>
+
+function proveedoresrepo() {
+  //alert('proveedores repo');
+ $("#contenido0").empty().load("../../home/index/btn_functions.php");
+
+  return false
+}
+
+function guiasrepo() {
+  //alert('guias repo');
+  $("#contenido0").empty().load("../../home/index/repoguias.php");
+  return false
+}
+
+</script>
+
+
+
+
+
+
+
+
 </body>
 </html>

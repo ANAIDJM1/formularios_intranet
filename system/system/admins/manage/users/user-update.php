@@ -44,31 +44,31 @@ $user_id = $_SESSION['user_id']= $_REQUEST['user_id'];
 
 <div class="col-md-12">
               <div class="form-group">
-                <label>Choose Usertype</label>
+                <label>Seleccione tipo de usuario</label>
                 <select class="form-control select2" name="usertype_id" style="width: 100%;">
-                  <option value="3" <?php if($usertype_id == "3"){?> selected <?php }?>>Student</option>
-                  <option value="2" <?php if($usertype_id == "2"){?> selected <?php }?>>Faculty</option>
-                  <option value="1" <?php if($usertype_id == "1"){?> selected <?php }?>>Admin</option>
+                  <option value="1" <?php if($usertype_id == "1"){?> selected <?php }?>>Proveedor</option>
+                  <option value="2" <?php if($usertype_id == "2"){?> selected <?php }?>>Admin</option>
+                  <option value="3" <?php if($usertype_id == "3"){?> selected <?php }?>>Personal de campo/Guia</option>
                 </select>
               </div>
 </div>
 <div class="col-md-12">
               <div class="form-group">
-                <label>Firstname</label>
+                <label>Nombre</label>
                   <input type="text" name="firstname" class="form-control" style="width: 100%;" value="<?php echo $fname?>" required>
               </div>
 </div>
 
 <div class="col-md-12">
               <div class="form-group">
-                <label>Middlename</label>
+                <label>Apellido Paterno</label>
                   <input type="text" name="middlename" class="form-control" style="width: 100%;" value="<?php echo $mname?>">
               </div>
 </div>
 
 <div class="col-md-12">
               <div class="form-group">
-                <label>Lastname</label>
+                <label>Apellido Materno</label>
                   <input type="text" name="lastname" class="form-control" style="width: 100%;" value="<?php echo $lname?>" required>
               </div>
 </div>
@@ -104,10 +104,6 @@ $user_id = $_SESSION['user_id']= $_REQUEST['user_id'];
 
    </div>   
 </form>
-
-
-
-
 
 
 

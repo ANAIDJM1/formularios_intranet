@@ -53,8 +53,9 @@ while ($row = $user_retrieve->fetch()) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>FBC ENGINEERING SYSTEM REVIWER<br>
-	LOG IN</title>
+	<title>VALENCIA TRAVEL - BD SYSTEM</title>
+	<meta name="author" content="Developers: Jorge Venero / Anaid Jimenez Moreano">
+	
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
@@ -85,7 +86,7 @@ while ($row = $user_retrieve->fetch()) {
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
-				<div class="login100-form-title" style="padding: 15px;"<!--style="width:45%;background-repeat: no-repeat;background-position: 100px;background-image: url(images/logo-web.png);"-->>
+				<div class="login100-form-title" style="padding: 15px;">
 					<span class="login100-form-title-1">
 						<img style="width:90%" src="images/logo-web.png">						
 					</span>

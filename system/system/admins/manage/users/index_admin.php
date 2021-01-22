@@ -4,7 +4,7 @@ include("modals.php");
 
 $user_id = $_SESSION['user_id'];
 
- $stmt = $conn->prepare("SELECT * FROM  users where  usertype_id = 1 ");
+ $stmt = $conn->prepare("SELECT * FROM  users where  usertype_id = 2 ");
  $stmt->execute(); 
 
 
@@ -17,16 +17,9 @@ $user_id = $_SESSION['user_id'];
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Modify Teachers Accounts <br>
+      Administradores <br>
 
-
-
-
-
- <button type="button" class="btn btn-default"><a href="index.php" >All Users Account</a></li></button>
-       <button type="button" class="btn btn-default"><a href="index_student.php" >Student's Account </a></li></button>
-      <button type="button" class="btn btn-default"><a href="index_teacher.php" >Teacher's Account</a></li></button>
-      <button type="button" class="btn btn-default"><a href="index_admin.php" >Admin Account</a></li></button>
+ <button type="button" class="btn btn-default"><a href="index.php" >Todas las cuentas de usuarios</a></li></button>  
     
     
       </ol>
@@ -39,7 +32,7 @@ $user_id = $_SESSION['user_id'];
 
           <div class="box">
             <div class="box-header">
-                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-adduser">Add User</button>
+                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-adduser">Adicionar usuario</button>
             </div>
             <div class="box-body table-responsive no-padding">
 
@@ -56,12 +49,9 @@ $numbering = 1;
 ?>
      <th>No.</th>
 
-                  <th>Name</th>
-                                    
-                  <th>Username</th>
-                   
-              
-                  <th>Manage</th>
+                  <th>NOMBRE</th>                                    
+                  <th>USERNAME</th>              
+                 <th>OPCIONES</th>
                 </tr>
     <?php
     while($row = $stmt->fetch()){
@@ -75,9 +65,9 @@ $numbering = 1;
                   <td><?php echo $row['username']; ?> </td>
              
               
-                  <td><a href = "user-update.php?user_id=<?php echo $row['user_id']; ?>" ><i class="fa fa-edit"> Edit</i></a> 
+                  <td><a href = "user-update.php?user_id=<?php echo $row['user_id']; ?>" ><i class="fa fa-edit"> Editar</i></a> 
                   
-                    <a href = "user-delete.php?id=<?php echo $row['user_id']; ?>" ><i class="fa fa-times"> Remove</i></a></t>
+                    <a href = "user-delete.php?id=<?php echo $row['user_id']; ?>" ><i class="fa fa-times"> Eliminar</i></a></t>
                 </tr>
 
                 <?php 
@@ -98,13 +88,6 @@ $numbering++;?>
           <!-- /.box -->
 
       
-
-
-
-
-
-
-
 
   </section>
     <!-- /.content -->

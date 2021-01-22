@@ -9,8 +9,6 @@ $firstname = $_REQUEST['firstname'];
 $middlename = $_REQUEST['middlename'];
 $lastname = $_REQUEST['lastname'];
 
-$course = $_REQUEST['course'];
-$year = $_REQUEST['year'];
 
 
 $username = $_REQUEST['username'];
@@ -21,18 +19,18 @@ $user_type = $_REQUEST['user_type'];
 
 
 if($usertype_id == '1'){
-		$user_type = 'Admin';
+		$user_type = 'Proveedor';
 }
 elseif($usertype_id == '2'){
-  $user_type = 'Teacher';
+  $user_type = 'Admin';
 }
 elseif($usertype_id == '3'){
-  $user_type = 'Student';
+  $user_type = 'Personal de campo/Guia';
 }
 
 
-$stmt = "INSERT INTO users (usertype_id, fname, mname, lname, username, password, user_type, course, year ) 
-VALUES ('$usertype_id','$firstname','$middlename','$lastname','$username','$password','$user_type', '$course','$year' )";
+$stmt = "INSERT INTO users (usertype_id, fname, mname, lname, username, password, user_type ) 
+VALUES ('$usertype_id','$firstname','$middlename','$lastname','$username','$password','$user_type')";
  if($conn->exec($stmt)==true){
   header("location: index.php");
   }
@@ -51,15 +49,15 @@ $usertype_id = $_REQUEST['usertype_id'];
 $user_type = $_REQUEST['user_type'];
 
 if($usertype_id == '1'){
-		$user_type = 'Admin';
+		$user_type = 'Proveedor';
 }
 elseif($usertype_id == '2'){
-  $user_type = 'Teacher';
+  $user_type = 'Admin';
  header("location: index_teacher.php");
 
 }
 elseif($usertype_id == '3'){
-  $user_type = 'Student';
+  $user_type = 'Personal de campo/Guia';
 }
 
 

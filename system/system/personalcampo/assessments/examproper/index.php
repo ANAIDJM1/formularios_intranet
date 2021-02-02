@@ -1,5 +1,12 @@
 <?php 
-include("../../header.php");
+include("../../header.php"); 
+include("modals.php"); 
+$user_id = $_SESSION['user_id'];
+
+
+ $stmt = $conn->prepare("SELECT * FROM  examproper WHERE user_id = '$user_id' ");
+ $stmt->execute();  
+
 
 ?>
   <!-- =============================================== -->
@@ -9,52 +16,81 @@ include("../../header.php");
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        PROPER EXAMINATION
-        <small>Please secure your access code!</small>
+       PREBOARD EXAMINATION
+        <i><small>This is where to add PREBOARD examination</small></i>
       </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Layout</a></li>
-        <li class="active">Fixed</li>
+    
       </ol>
     </section>
-
 
   <section class="content">
     <!-- Main content -->
 
+
+
+          <div class="box">
             <div class="box-header">
+                <button type="button" id="add_examproper_modal" class="btn btn-info" data-toggle="modal" data-target="#modal-addTest">Add Examination</button></a>
+            </div>
+            <div class="box-body table-responsive no-padding">
+
+              <table class="table table-hover">
+              
+                <tr>
+                  
+                  <th>Course</th>
+                   <th>Subject</th>
+                  <th>Total Questions</th>
+                  <th>Passing Rate</th>
+                  <th>Time Limit</th>
+                  <th>Access Code</th>
+       <!--<th> Date and Time</th>-->
+ 
+                  <th>Manage</th>
+                </tr>
+
+    <?php
+    while($row = $stmt->fetch()){
+    ?>
+                <tr>
+                  <td><?php echo $row['test_desc']; ?></a></td>
+                
+                  <td><?php echo $row['category_exam']; ?></td> 
+                  <td><?php echo $row['total_questions']; ?></td>
+                  <td><?php echo $row['passing_rate']."%"; ?></td> 
+                  <td><?php echo $row['time_limit']." minutes"; ?></td>
+                  <td><?php echo $row['access_code']; ?></td>      
+        <!--<td><?php echo $row['date_time']; ?></td>      -->
+
+
             
+              <td> <a href="questions-view.php?id=<?php echo $row['access_code']; ?>" ><i class="fa fa-info"> View Question</i></a>|<a href = "exam-update.php?test_id=<?php echo $row['test_id']; ?>" ><i class="fa fa-edit"> Edit</i></a> |
+               <a class="removeTest"  href = "exam-delete.php?test_id=<?php echo $row['test_id']; ?>" ><i class="fa fa-times"> Remove</i></a></td>
+               
+                  <!--<i class="fa fa-times"> Remove</i></a></td> -->
+                </tr>
+    <?php
+    }
+    ?>
+
+
+
+              </table>
             </div>
-
-      <div class="row">
-
-        <div class="col-md-12">
-
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-aqua">
-            <div class="inner">
-             
-              <h3> TAKE TEST
-              </h3>
-             
-            </div>
-            <div class="icon"><a href ="" class="small-box-footer" class="btn btn-info" data-toggle="modal" data-target="#modal-taketest">
-              <i class="fa fa-laptop"></i></a>
-            </div></a>
-           <a href ="" class="small-box-footer" class="btn btn-info" data-toggle="modal" data-target="#modal-taketest"><i>TAKE</i></a>
+            <!-- /.box-body -->
+                  <div class="box-footer"> </div>
           </div>
-        </div>
-   
+          <!-- /.box -->
+
+      
 
 
-<!-- /body -->
 
-        </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
+
+
+
+
+
   </section>
     <!-- /.content -->
   </div>
@@ -64,45 +100,46 @@ include("../../header.php");
 
 
 
-<?php include("../../footer.php"); ?>
+<?php include("../footer.php"); ?>
 
 
+<script type="text/javascript">
+  $(document).on("click",".removeTest",function(){
+     
+     if (confirm("Do you want to delete this test?")) {
+      return true;
+     }else{
+      return false;
+     };
 
- <div class="modal fade" id="modal-taketest">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <form action="btn_functions.php" method="POST">
-              <div class="modal-header">
-              </div>
-              <div class="modal-body">
+  });
 
-      
-      
+  $("#add_examproper_modal").on("click" ,function(){
+ 
+ 
+      var test_desc;
+      var test_subject;
 
+ 
+      test_subject =  $("#category_exam").val();
+      test_desc = $("#test_desc").val();
 
-              <div class="form-group">
-                <label>Access Code</label>
-                  <input type="text" name="access_code" class="form-control" style="width: 100%;" placeholder="Enter access code" required>
-              </div>
+ 
 
-         <!--          <div class="form-group">
-                <label>Date and Time</label>
-                  <input type="datetime-local" name="date_time" class="form-control" style="width: 100%;" placeholder="Enter date of Exam" required>
-              </div>
-            -->
+      $.ajax({    //create an ajax request to load_page.php
+      type:"POST",
+      url: "loaddata.php",             
+      dataType: "text",   //expect html to be returned  
+      data:{course:test_desc,subject:test_subject},               
+      success: function(data){     
+        $("#loaddata").hide();    
+        $("#loaddata").fadeIn();             
+        $("#loaddata").html(data); 
+        // alert(data);
 
-              <div class="modal-footer"><div class="col-md-12">
-                <input type="submit" name="btnTakeTest" value="Save" class="btn btn-info"></div>
-              </div>
+      }
 
-              <div class="footer"></div>
-            </div>
-            <!-- /.modal-content -->
-              </form>
-          </div>
-          <!-- /.modal-dialog -->
-        </div>
-        <!-- /.modal -->
+      });
 
-
-
+  })
+</script>

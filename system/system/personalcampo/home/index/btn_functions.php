@@ -2,28 +2,38 @@
 include("../../../connections/db-connect.php");
 $user_id = $_SESSION['user_id'];
 
-$date = date("y-m-d H:i");
+if(isset($_POST['submit'])){
 
-if(isset($_REQUEST['btnJoinCourse'])){
+$ruc = htmlspecialchars($_POST['RUC']);
+$DireccionCasa  = strtoupper(htmlspecialchars($_POST['DireccionCasa']));
+$nomape  = strtoupper(htmlspecialchars($_POST['nomape']));
+$celular= htmlspecialchars($_POST['celular']);
+$mail= htmlspecialchars($_POST['mail']);
 
-$accesscode = $_REQUEST['accesscode'];
+$NombreBanco= htmlspecialchars($_POST['NombreBanco']);
+$CtaAhorros= htmlspecialchars($_POST['CtaAhorros']);
+$CtaCorriente= htmlspecialchars($_POST['CtaCorriente']);
+$CCI= htmlspecialchars($_POST['CCI']);
+$CtaDetra= htmlspecialchars($_POST['CtaDetra']);
+
+$CEnombre  = strtoupper(htmlspecialchars($_POST['CEnombre']));
+$CEcelular = htmlspecialchars($_POST['CEcelular']);
+
+$PoliPago = htmlspecialchars($_POST['PoliPago']);
+$obs = htmlspecialchars($_POST['obs']);
 
 
- $stmt = $conn->prepare("SELECT * FROM  courses  where  access_code = '$accesscode' ");
- $stmt->execute(); 
- while($row = $stmt->fetch()){
-	$course_id = $row['course_id'];
-  }
- if($stmt->rowCount() > 0){
-	$course_create = "INSERT INTO classlists ( course_id, user_id, date_created) VALUES ('$course_id',  '$user_id', '$date')";
-     	if($conn->exec($course_create)==true){
- 		header("location: index.php");
-        }
- }
+$mysqla2 = $conn->prepare("INSERT INTO `personalcampo` (`RUC`, `DireccionCasa`, `NombreBanco`, `CtaAhorros`, `CtaCorriente`, `CCI`,
+ `CtaDetra`, `CEnombre`, `CEcelular`, `PoliPago`, `obs`, `mail`, `celular`, `nomape`) VALUES 
+ ('$ruc','$DireccionCasa','$NombreBanco','$CtaAhorros','$CtaCorriente','$CCI',
+ '$CtaDetra','$CEnombre','$CEcelular','$PoliPago','$obs','$mail','$celular','$nomape')");
 
+if($mysqla2 ->execute()){	
+	header("Location: index.php?envio=success");
 
-
+  } else{
+	header("Location: index.php?envio=error");
+  }  
 }
-
 
 ?>

@@ -1,8 +1,7 @@
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
-      
     </div>
-    <strong>Copyright &copy; 2018 <a href="#">by: FBC ITCore Group.</a></strong> All rights
+    <strong>Copyright &copy; 2021 <a href="https://www.valenciatravelcusco.com/">by: Valencia Travel 2021</a></strong> All rights
     reserved.
   </footer>
 
@@ -170,6 +169,10 @@
 <script src="../../../../dist/js/demo.js"></script>
 
 
+<script src="../../../../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="../../../../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+
+
 <script>
   $(function () {
     //Add text editor
@@ -250,5 +253,21 @@
   })
 </script>
 
+<script>
+  $(function () {
+    $('#example1').DataTable()
+    $('#example2').DataTable({
+      'paging'      : true,
+      'lengthChange': false,
+      'searching'   : false,
+      'ordering'    : true,
+      'info'        : true,
+      'autoWidth'   : false
+    })
+  })
+
+ 
+</script>
+ 
 </body>
 </html>

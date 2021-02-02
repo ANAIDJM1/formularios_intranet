@@ -2,9 +2,10 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
+$database ="fbc_reviewer";
 
 try {
-    $conn = new PDO("mysql:host=$servername;dbname=fbc_reviewer", $username, $password);
+    $conn = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
     // set the PDO error mode to exception
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }

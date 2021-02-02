@@ -9,6 +9,9 @@ if($_SESSION['user_id']==""){
 ?>
 
 
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,9 +21,6 @@ if($_SESSION['user_id']==""){
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-
-  <link rel="stylesheet" href="http://localhost/basededatos/style.css">
   <link rel="stylesheet" href="../../../../bower_components/bootstrap/dist/css/bootstrap.min.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="../../../../bower_components/font-awesome/css/font-awesome.min.css">
@@ -46,16 +46,14 @@ if($_SESSION['user_id']==""){
 
   <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href="../../../../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
-  <link rel="stylesheet" href="../../../../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
 
-  <script src='https://code.jquery.com/jquery-3.4.1.min.js'></script>
 
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 <!-- ADD THE CLASS fixed TO GET A FIXED HEADER AND SIDEBAR LAYOUT -->
 <!-- the fixed layout is not compatible with sidebar-mini -->
-<body class="hold-transition skin-black fixed sidebar-mini">
+<body class="hold-transition skin-blue fixed sidebar-mini">
 <!-- Site wrapper -->
 <div class="wrapper">
 
@@ -63,35 +61,82 @@ if($_SESSION['user_id']==""){
     <!-- Logo -->
   <a href="../../home/index" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"></span>
+      <span class="logo-mini"><b>L</b>MS</span>
       <!-- logo for regular state and mobile devices -->
-        <img src="../../../../dist/img/logo.png" class="user-image" alt="User Image" width="50%">
-      </span>
+        <img src="../../../../dist/img/logo.png" class="user-image" alt="User Image" height="50" width="50">
+          
+           FBC Reviewer </span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
       <!-- Sidebar toggle button-->
       <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
-        <span class="sr-only"></span>
+        <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </a>
 
       <div class="navbar-custom-menu">
-        <ul class="nav navbar-nav">   
+        <ul class="nav navbar-nav">
+
+
+
+<li class="dropdown messages-menu">
+            <a href="../../home/index/">
+              <i>HOME </i>
+            </a>
+          </li>
+
+
+<!--<li class="dropdown messages-menu">
+            <a href="../../assessments/databank/">
+              <i>TEST BANK </i>
+            </a>
+          </li> -->
+
+ 
+
+ <li class="dropdown messages-menu">
+            <a href="../../assessments/pretest/">
+              <i>PRE TEST</i>
+            </a>
+          </li>
+
+           <li class="dropdown messages-menu">
+           <a href="../../assessments/examproper/">
+              <i>PROPER EXAM</i>
+            </a>
+          </li>
+
+           <li class="dropdown messages-menu">
+           <a href="../../assessments/results/">
+              <i>RESULTS</i>
+            </a>
+          </li>
+<?php if($_SESSION['usertype_id']== 1) {?> 
+          <li class="dropdown messages-menu">
+           <a href="../../manage/users/">
+              <i>ACCOUNTS</i>
+
+            </a>
+          </li> 
+
+
+        <?php } ?>
+    
 
 
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="../../../../dist/img/logo2.png" class="user-image" alt="User Image">
+              <img src="../../../../dist/img/logo.png" class="user-image" alt="User Image">
               <span class="hidden-xs"><?php echo $_SESSION['firstname'] ?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="../../../../dist/img/logo2.png" class="img-circle" alt="User Image">
+                <img src="../../../../dist/img/logo.png" class="img-circle" alt="User Image">
 
                 <p>
                   <?php echo $_SESSION['firstname']." ". $_SESSION['lastname'] ?>
@@ -104,7 +149,7 @@ if($_SESSION['user_id']==""){
                   
                 </div>
                 <div class="pull-right">
-                 <a href="../../logout.php/" class="btn btn-default btn-flat">Cerrar</a>
+                 <a href="../../logout.php/" class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>
@@ -129,25 +174,41 @@ if($_SESSION['user_id']==""){
       <ul class="sidebar-menu" data-widget="tree">
 
 
-        <li class="treeview menu-open">
+        <li class="treeview">
           <a href="#">
             <i class="fa fa-files-o"></i>
-            <span>Panel principal</span>
+            <span>Test Panel</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right">
               </i>
             </span>
           </a>
-          <ul class="treeview-menu" style="display:block">
-            <li><a href="#DA" ><i class="fa fa-circle-o"></i>Datos Personales</a></li>
-            <li><a href="#AC"><i class="fa fa-circle-o"></i>Datos Bancarios</a></li>
-            <li><a href="#AR"><i class="fa fa-circle-o"></i>Emergencia</a></li>           
-			<li><a href="#GEN"><i class="fa fa-circle-o"></i>Politicas Generales</a></li>
+          <ul class="treeview-menu">
+            <li><a href="../../assessments/pretest/"><i class="fa fa-circle-o"></i>Pre Test</a></li>
+            <li><a href="../../assessments/examproper/"><i class="fa fa-circle-o"></i>Exam Proper</a></li>
+            <li><a href="../../assessments/results/"><i class="fa fa-circle-o"></i>Results</a></li>
+
           </ul>
         </li>
+<?php 
+
+if($_SESSION['usertype_id']== 1) {?>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-gears"></i>
+            <span>Users Account</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="../../manage/users/"><i class="fa fa-circle-o"></i> Accounts</a></li>
+          </ul>
+        </li>
+        <?php } ?>
       </ul>
     </section>
- 
+    <!-- /.sidebar -->
   </aside>
 </div>
 </body>

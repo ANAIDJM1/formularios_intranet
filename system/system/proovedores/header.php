@@ -19,6 +19,7 @@ if($_SESSION['user_id']==""){
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+
   <link rel="stylesheet" href="http://localhost/basededatos/style.css">
   <link rel="stylesheet" href="../../../../bower_components/bootstrap/dist/css/bootstrap.min.css">
   <!-- Font Awesome -->
@@ -47,6 +48,7 @@ if($_SESSION['user_id']==""){
   <link rel="stylesheet" href="../../../../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
   <link rel="stylesheet" href="../../../../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
 
+  <script src='https://code.jquery.com/jquery-3.4.1.min.js'></script>
 
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">

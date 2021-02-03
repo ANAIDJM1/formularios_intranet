@@ -13,13 +13,11 @@ include("../../header.php");
       
       <div class="callout callout-info">
         <h4>Bienvenido       
-             <i>   <?php echo $_SESSION['firstname']." ". $_SESSION['lastname'] ?> ! </h4>
+             <i>   <?php echo $_SESSION['firstname']." ". $_SESSION['middlename']." ". $_SESSION['lastname'] ?> ! </h4>
       </div> 
 
 <div class="box box-warning">
   <div class="box-header with-border">
-
-  <div id="contenido0"></div>  
   </div>
 </div>   
 

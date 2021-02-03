@@ -4,11 +4,12 @@ include("../../manage/users/modals.php");
 
 $user_id = $_SESSION['user_id'];
 
- $stmt2 = $conn->prepare("SELECT * FROM  personalcampo");
+ $stmt2 = $conn->prepare("SELECT * FROM  proveedores");
  $stmt2->execute(); 
 
 
 ?>
+
   <!-- =============================================== -->
 
   <!-- Content Wrapper. Contains page content -->
@@ -17,7 +18,7 @@ $user_id = $_SESSION['user_id'];
       <section class="content-header">
       
       <div class="callout callout-info">
-        <h4>REPORTE PERSONAL DE CAMPO</h4>
+        <h4>REPORTE PROVEEDORES</h4>
       </div> 
 
 <div class="box box-warning">
@@ -30,7 +31,7 @@ $user_id = $_SESSION['user_id'];
   <div>
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1> TODOS LOS GUIAS / COCINEROS</h1>     
+      <h1> TODOS LOS PROVEEDORES</h1>     
     </section>
 
   <section class="content">
@@ -41,6 +42,7 @@ $user_id = $_SESSION['user_id'];
             <div class="box-body table-responsive no-padding">
               <table class="table table-hover">              
                 <tr>
+                  
 
 <?php 
 $c = 0;
@@ -49,9 +51,10 @@ $numbering = 1;
 ?>
                     <th>Nro</th>
                     <th>RUC</th>
-                  <th>NOMBRE COMPLETO</th>
-                  <th>CELULAR</th>                                    
-                  <th>EMAIL</th>                 
+                  <th>NOMBRE COMERCIAL</th>
+                  <th>CEL. AREA CONTABLE</th>                                    
+                  <th>EMAIL AREA CONTABLE</th>  
+                  <th>WEB</th>
                 </tr>
     <?php
     while($row = $stmt2->fetch()){
@@ -59,12 +62,13 @@ $numbering = 1;
                 <tr>
                  <td><?php echo $numbering;?> </td>
                   <td><?php echo $row['RUC']; ?> </td>                  
-                  <td><?php echo $row['nomape']; ?> &nbsp;
-                  <?php echo $row['celular']; ?>  &nbsp;
-                  <?php echo $row['mail']; ?> </td>                      
+                  <td><?php echo $row['Nombre Comercial']; ?> &nbsp;
+                  <?php echo $row['AC_celular']; ?>  &nbsp;
+                  <?php echo $row['AC_email']; ?> </td>
+                  <td><?php echo $row['web']; ?> </td>           
               
-                  <td><a href = "pc-update.php?pc_id=<?php echo $row['RUC']; ?>" ><i class="fa fa-edit"> Editar</i></a>                   
-                    <a href = "pc-delete.php?pc_id=<?php echo $row['RUC']; ?>" ><i class="fa fa-times"> Borrar</i></a></t>
+                  <td><a href = "prove-update.php?prove_id=<?php echo $row['RUC']; ?>" ><i class="fa fa-edit"> Editar</i></a>                   
+                    <a href = "prove-delete.php?prove_id=<?php echo $row['RUC']; ?>" ><i class="fa fa-times"> Borrar</i></a></t>
                 </tr>
 
                 <?php 

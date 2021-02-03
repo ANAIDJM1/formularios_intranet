@@ -85,17 +85,17 @@ if($_SESSION['user_id']==""){
 
 <?php if($_SESSION['usertype_id']== 2) {?>           
           <li class="dropdown messages-menu">
-           <a href="#" onclick="proveedoresrepo()">
+           <a href="../../home/index/repoprove.php" >
               <i>Reportes de Proveedores</i>
             </a>
           </li> 
           <li class="dropdown messages-menu">
-           <a href="#" onclick="guiasrepo()">
+           <a href="../../home/index/repoguias.php" >
               <i>Reportes de personal de campo & guias</i>
             </a>
           </li> 
           <li class="dropdown messages-menu">
-           <a href="#">
+           <a href="../../manage/users/">
               <i>Adm. Usuarios</i>
             </a>
           </li> 
@@ -160,8 +160,8 @@ if($_SESSION['user_id']==""){
             </span>
           </a>
           <ul class="treeview-menu" style="display:block">
-            <li><a href="#" onclick="proveedoresrepo()"><i class="fa fa-circle-o"></i>Reportes de Proovedores</a></li>
-            <li><a href="#" onclick="guiasrepo()"><i class="fa fa-circle-o"></i>Reportes de<br> Personal de campo &<br> Guias</a></li>        
+            <li><a href="../../home/index/repoprove.php" ><i class="fa fa-circle-o"></i>Reportes de Proovedores</a></li>
+            <li><a href="../../home/index/repoguias.php" ><i class="fa fa-circle-o"></i>Reportes de<br> Personal de campo &<br> Guias</a></li>        
           </ul>
         </li>
 <?php 
@@ -185,29 +185,6 @@ if($_SESSION['usertype_id']== 2) {?>
     <!-- /.sidebar -->
   </aside>
 </div>
-
-
-<script>
-
-function proveedoresrepo() {
-  //alert('proveedores repo');
- $("#contenido0").empty().load("../../home/index/btn_functions.php");
-
-  return false
-}
-
-function guiasrepo() {
-  //alert('guias repo');
-  $("#contenido0").empty().load("../../home/index/repoguias.php");
-  return false
-}
-
-</script>
-
-
-
-
-
 
 
 
